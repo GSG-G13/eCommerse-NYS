@@ -1,45 +1,46 @@
-// data To page 
-let poductsInfo = [
-  {
-    name: "logo1",
-    photoSrs: "../images/22.jpg",
-    price: "20$",
-    catagory: "food",
-  },
-  {
-    name: "logo2",
-    photoSrs: "../images/33.jpg",
-    price: "20$",
-    catagory: "food",
-  },
-  {
-    name: "logo3",
-    photoSrs: "../images/55.jpg",
-    price: "450$",
-    catagory: "food",
-  },
-  {
-    name: "logo4",
-    photoSrs: "../images/33.jpg",
-    price: "50$",
-    catagory: "food",
-  },
+// data To page
+// let poductsInfo = [
+//   {
+//     name: "logo1",
+//     photoSrs: "image/22.jpg",
+//     price: "20$",
+//     catagory: "food",
+//   },
+//   {
+//     name: "logo2",
+//     photoSrs: "image/33.jpg",
+//     price: "20$",
+//     catagory: "food",
+//   },
+//   {
+//     name: "logo3",
+//     photoSrs: "image/55.jpg",
+//     price: "450$",
+//     catagory: "food",
+//   },
+//   {
+//     name: "logo4",
+//     photoSrs: "image/33.jpg",
+//     price: "50$",
+//     catagory: "food",
+//   },
+// ];
 
-];
-
-
+if (localStorage.getItem("customer")) {
+  let doArray = localStorage.getItem("customer");
+  ctArray = JSON.parse(doArray);
+  addProductToPage(ctArray);
+}
 //  Add product to Page User
-
-let mainele = document.getElementsByTagName("main")[0];
-
 function addProductToPage(poductsInfo) {
+  let mainele = document.getElementsByTagName("main")[0];
   for (let i = 0; i < poductsInfo.length; i++) {
     let divBox = document.createElement("div");
     divBox.className = "box";
 
     let imgEle = document.createElement("img");
     // console.log(poductsInfo[i].name);
-    imgEle.src = poductsInfo[i].photoSrs;
+    imgEle.src = poductsInfo[i].img;
 
     let divImgDisc = document.createElement("div");
     divImgDisc.className = "img-discription";
@@ -55,19 +56,14 @@ function addProductToPage(poductsInfo) {
     priceDiv.className = "price";
     priceDiv.textContent = poductsInfo[i].price;
 
-
     divBox.appendChild(imgEle);
     divImgDisc.appendChild(addIcon);
     divImgDisc.appendChild(h4Ele);
-    divImgDisc.appendChild(priceDiv)
+    divImgDisc.appendChild(priceDiv);
     divBox.appendChild(divImgDisc);
     mainele.appendChild(divBox);
-
   }
 }
-
-addProductToPage(poductsInfo);
-
 
 document.addEventListener("click", (alpha) => {
   //to delete the element
@@ -75,7 +71,6 @@ document.addEventListener("click", (alpha) => {
     console.log("this for delete element");
     alpha.target.parentElement.remove();
   }
-
 
   //to add
   if (alpha.target.classList.contains("plus")) {
@@ -91,7 +86,6 @@ document.addEventListener("click", (alpha) => {
       parseInt(alpha.target.parentElement.children[1].value) - 1;
   }
 
-
   //   to update the counter in every time you click
   countUpdate();
 });
@@ -104,7 +98,6 @@ shopingIcon.addEventListener("click", () => {
   shopingBox.classList.toggle("open");
 });
 
-
 let spanPriceTotal = document.querySelector(".total .totalAll");
 
 //when we click (add To Card) button
@@ -112,10 +105,12 @@ let spanPriceTotal = document.querySelector(".total .totalAll");
 let addToCard = document.querySelectorAll(".fa-heart");
 addToCard.forEach((heart) => {
   heart.addEventListener("click", (e) => {
-
     priceTotalFunc(e.target.parentElement.children[2].textContent);
-    addProductToCard(e.target.parentElement.children[1].textContent, e.target.parentElement.parentElement.children[0].src, e.target.parentElement.children[2].textContent);
-
+    addProductToCard(
+      e.target.parentElement.children[1].textContent,
+      e.target.parentElement.parentElement.children[0].src,
+      e.target.parentElement.children[2].textContent
+    );
   });
 });
 //  control of Total Price
@@ -125,11 +120,10 @@ function priceTotalFunc(price) {
   spanPriceTotal.textContent = `$ ${priceTotal}`;
 }
 
-//  Add Product to Card 
+//  Add Product to Card
 
 let containerOfBoxes = document.querySelector(".content");
 function addProductToCard(namePro, imgSrc, price) {
-
   let boxCard = document.createElement("div");
   boxCard.className = "box-cart";
 
@@ -178,7 +172,6 @@ function addProductToCard(namePro, imgSrc, price) {
   containerOfBoxes.prepend(boxCard);
 }
 
-
 // Update count
 function countUpdate() {
   document.querySelectorAll("i.count").forEach((coun) => {
@@ -188,17 +181,3 @@ function countUpdate() {
   });
 }
 countUpdate();
-
-
-
-  
- 
-  
- 
-  
-
-  
-
-  
-
-
