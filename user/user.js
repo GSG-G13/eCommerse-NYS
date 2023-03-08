@@ -1,31 +1,3 @@
-// data To page
-// let poductsInfo = [
-//   {
-//     name: "logo1",
-//     photoSrs: "image/22.jpg",
-//     price: "20$",
-//     catagory: "food",
-//   },
-//   {
-//     name: "logo2",
-//     photoSrs: "image/33.jpg",
-//     price: "20$",
-//     catagory: "food",
-//   },
-//   {
-//     name: "logo3",
-//     photoSrs: "image/55.jpg",
-//     price: "450$",
-//     catagory: "food",
-//   },
-//   {
-//     name: "logo4",
-//     photoSrs: "image/33.jpg",
-//     price: "50$",
-//     catagory: "food",
-//   },
-// ];
-
 if (localStorage.getItem("customer")) {
   let doArray = localStorage.getItem("customer");
   ctArray = JSON.parse(doArray);
@@ -56,11 +28,17 @@ function addProductToPage(poductsInfo) {
     priceDiv.className = "price";
     priceDiv.textContent = poductsInfo[i].price;
 
+    //div with category
+    let cate = document.createElement("div");
+    cate.className = "cate";
+    cate.textContent = poductsInfo[i].category;
+
     divBox.appendChild(imgEle);
     divImgDisc.appendChild(addIcon);
     divImgDisc.appendChild(h4Ele);
     divImgDisc.appendChild(priceDiv);
     divBox.appendChild(divImgDisc);
+    divBox.appendChild(cate);
     mainele.appendChild(divBox);
   }
 }
