@@ -69,8 +69,6 @@ function addProductToPage(poductsInfo) {
 addProductToPage(poductsInfo);
 
 
-
-
 document.addEventListener("click", (alpha) => {
   //to delete the element
   if (alpha.target.classList.contains("delBtn")) {
@@ -190,5 +188,17 @@ function countUpdate() {
   });
 }
 countUpdate();
+
+
+
+  
+ 
+  
+ 
+  
+
+  
+
+  
 
 
