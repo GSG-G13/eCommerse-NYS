@@ -100,11 +100,17 @@ function addProductToPage(namePro, imgSrc, price, category) {
   let deletBtn = document.createElement("i");
   deletBtn.className = "fa-solid fa-trash-can delBtn";
 
+  //div with category
+  let cate = document.createElement("div");
+  cate.className = "cate";
+  cate.textContent = category;
+
   divBox.appendChild(imgEle);
   divImgDisc.appendChild(h4Ele);
   divImgDisc.appendChild(priceDiv);
   divBox.appendChild(divImgDisc);
   divBox.appendChild(deletBtn);
+  divBox.appendChild(cate);
   main.appendChild(divBox);
 }
 //set local boxes
@@ -116,7 +122,7 @@ function checkToLocal() {
       name: box.children[1].children[0].textContent,
       img: box.firstChild.src,
       price: box.children[1].children[1].textContent,
-      category: "unknown",
+      category: box.lastChild.textContent,
     });
   });
   localStorage.setItem("customer", JSON.stringify(boxesArray));

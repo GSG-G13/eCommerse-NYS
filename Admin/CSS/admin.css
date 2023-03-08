@@ -151,6 +151,9 @@ h4[contenteditable="true"],
   padding: 0.5rem 1rem;
   height: fit-content;
 }
+.box .cate {
+  visibility: hidden;
+}
 
 /* for noor */
 /* .container > div label {

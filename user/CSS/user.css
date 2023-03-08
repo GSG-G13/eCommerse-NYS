@@ -201,3 +201,6 @@ div.count {
 .total {
   text-align: center;
 }
+.box .cate {
+  visibility: hidden;
+}
