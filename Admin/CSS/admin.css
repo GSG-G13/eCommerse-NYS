@@ -18,9 +18,12 @@ body {
   margin: 0;
   font-family: Inter, sans-serif;
   padding: 1rem 7rem;
-  background-image: linear-gradient(315deg, #07002c, #050240db);
+  background-image: url(../../images/backg-admin.jpg);
+  background-size: cover;
+  background-attachment: fixed;
   background-repeat: no-repeat;
   min-height: 100vh;
+  backdrop-filter: brightness(0.5);
   color: aliceblue;
 }
 img,
@@ -60,8 +63,14 @@ textarea,
 select {
   font: inherit;
   border: none;
+  padding-left: 0.6rem;
   border-radius: 6px;
   border-bottom: 2px solid #ff1919;
+}
+h2 {
+  font-family: cursive;
+  color: darksalmon;
+  position: absolute;
 }
 main {
   gap: 1rem;
@@ -80,14 +89,13 @@ h4 {
   height: 45px;
   display: flex;
   align-items: center;
-  color: aqua;
 }
 .img-discription {
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 13%;
-  background-color: #675d5d;
+  background-color: #f93f3f;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
 }
@@ -97,7 +105,7 @@ h4 {
   position: absolute;
   right: 5px;
   top: 4px;
-  background-color: aliceblue;
+  background-color: #252525;
   padding: 0.3rem;
   border-radius: 4px;
 }
@@ -106,11 +114,14 @@ h4 {
   gap: 1.5rem;
   margin: auto;
   align-items: center;
-  background-color: #6060d5;
+  background-image: url(../../images/back-admin.png);
   width: fit-content;
+  background-size: cover;
   padding: 3rem 2rem;
+  background-position: bottom;
   flex-direction: column;
   margin-bottom: 2rem;
+  border-radius: 5px;
 }
 .container > div {
   width: 300px;
@@ -146,15 +157,24 @@ h4 {
 h4[contenteditable="true"],
 .price[contenteditable="true"] {
   color: red;
-  background-color: #e0e3e5;
-  border: 1px solid #0001ff;
+  background-color: #1c2225;
   padding: 0.5rem 1rem;
   height: fit-content;
+  margin: 6px;
+  border-radius: 5px;
 }
 .box .cate {
   visibility: hidden;
 }
 
+.search {
+  height: 2rem;
+  border-radius: 16px;
+  position: absolute;
+  top: 8%;
+  right: 80px;
+  padding: 0 1rem;
+}
 /* for noor */
 /* .container > div label {
   width: 62px;

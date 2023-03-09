@@ -1,13 +1,43 @@
+let search = document.querySelector(".search");
+//search input
+search.addEventListener("input", (alpha) => {
+  document.querySelector("main").textContent = "";
+  local = localStorage.getItem("customer");
+  doArray = JSON.parse(localStorage.getItem("customer"));
+  console.log(doArray);
+  let arrayNo = [];
+  for (let i = 0; i < doArray.length; i++) {
+    console.log(doArray[i]["name"]);
+    if (doArray[i]["name"].includes(document.querySelector(".search").value)) {
+      console.log(doArray[i]["name"]);
+      console.log(doArray[i]);
+      arrayNo.push(doArray[i]);
+      console.log(arrayNo, "new arr");
+    }
+  }
+  console.log(arrayNo);
+  for (let i = 0; i < arrayNo.length; i++) {
+    addProductToPage(
+      arrayNo[i].name,
+      arrayNo[i].img,
+      arrayNo[i].price,
+      arrayNo[i].category
+    );
+  }
+});
+// search.addEventListener("blur", (alpha) => {
+//   document.querySelector(".search").value = "";
+//   document.querySelector("main").textContent = "";
+//   doArray = JSON.parse(localStorage.getItem("customer"));
+//   addProductToPage(doArray);
+// });
+
 // grt from local storage
 if (localStorage.getItem("customer")) {
   let doArray = localStorage.getItem("customer");
   ctArray = JSON.parse(doArray);
   console.log(ctArray);
   ctArray.forEach((b) => {
-    // console.log(b.name);
-    // console.log(b.img);
-    // console.log(b.price);
-    // console.log(b.category);
     namePro = b.name;
     imgSrc = b.img;
     price = b.price;
@@ -127,34 +157,3 @@ function checkToLocal() {
   });
   localStorage.setItem("customer", JSON.stringify(boxesArray));
 }
-
-// if (
-//     alpha.target.classList.contains("fa-plus") &&
-//     alpha.target.parentElement.classList.contains("box")
-//   ) {
-//     countUpdate();
-//   }
-
-// ask Menetor
-
-// //Handel minus button
-// let minus = document.querySelectorAll(".plus-minus .minus");
-// minus.forEach((minusElement) => {
-//   minusElement.addEventListener("click", (element) => {
-//     //.childNodes[2] will not access input element
-//     console.log(element.target);
-//     console.log(element.target.parentElement.children[1].value); //for testing
-//     element.target.parentElement.children[1].value =
-//       parseInt(element.target.parentElement.children[1].value) - 1;
-//   });
-// });
-
-// //Handel plus button
-// let plus = document.querySelectorAll(".plus-minus .plus");
-// plus.forEach((plusElement) => {
-//   plusElement.addEventListener("click", (element) => {
-//     console.log(element.target);
-//     element.target.parentElement.children[1].value =
-//       parseInt(element.target.parentElement.children[1].value) + 1;
-//   });
-// });

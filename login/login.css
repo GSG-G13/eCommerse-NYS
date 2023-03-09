@@ -3,11 +3,12 @@
     font-family: 'poppins' ,sans-serif;
 }
 body{
-    background-image: url("../images/1.jpg");
+    background-image: url("../images/back.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    
     
 }
 .box{
@@ -17,10 +18,13 @@ body{
     min-height: 90vh;
 }
 .container{
-    width: 350px;
+    width: 500px;
     display: flex;
     flex-direction: column;
-    padding: 0 15px 0 15px;    
+    padding: 0 15px 0 15px;  
+    background-color: rgb(35, 34, 34);  
+    height: 500px;
+    border-radius: 10px;
 }
 span{
     color: #fff;

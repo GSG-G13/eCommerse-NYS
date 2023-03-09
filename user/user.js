@@ -1,3 +1,28 @@
+let search = document.querySelector(".search");
+//search input
+search.addEventListener("input", (alpha) => {
+  document.querySelector("main").textContent = "";
+  local = localStorage.getItem("customer");
+  doArray = JSON.parse(localStorage.getItem("customer"));
+  let arrayNo = [];
+  for (let i = 0; i < doArray.length; i++) {
+    console.log(doArray[i]["name"]);
+    if (doArray[i]["name"].includes(document.querySelector(".search").value)) {
+      arrayNo.push(doArray[i]);
+      console.log(arrayNo);
+    }
+  }
+  console.log(arrayNo);
+  addProductToPage(arrayNo);
+});
+search.addEventListener("blur", (alpha) => {
+  document.querySelector(".search").value = "";
+  document.querySelector("main").textContent = "";
+  doArray = JSON.parse(localStorage.getItem("customer"));
+  addProductToPage(doArray);
+});
+
+// localStorage.clear();
 if (localStorage.getItem("customer")) {
   let doArray = localStorage.getItem("customer");
   ctArray = JSON.parse(doArray);
@@ -79,18 +104,20 @@ shopingIcon.addEventListener("click", () => {
 let spanPriceTotal = document.querySelector(".total .totalAll");
 
 //when we click (add To Card) button
-
-let addToCard = document.querySelectorAll(".fa-heart");
-addToCard.forEach((heart) => {
-  heart.addEventListener("click", (e) => {
-    priceTotalFunc(e.target.parentElement.children[2].textContent);
-    addProductToCard(
-      e.target.parentElement.children[1].textContent,
-      e.target.parentElement.parentElement.children[0].src,
-      e.target.parentElement.children[2].textContent
-    );
+function show() {
+  let addToCard = document.querySelectorAll(".fa-heart");
+  addToCard.forEach((heart) => {
+    heart.addEventListener("click", (e) => {
+      priceTotalFunc(e.target.parentElement.children[2].textContent);
+      addProductToCard(
+        e.target.parentElement.children[1].textContent,
+        e.target.parentElement.parentElement.children[0].src,
+        e.target.parentElement.children[2].textContent
+      );
+    });
   });
-});
+}
+show();
 //  control of Total Price
 let priceTotal = 0;
 function priceTotalFunc(price) {
@@ -159,3 +186,81 @@ function countUpdate() {
   });
 }
 countUpdate();
+
+// let FilterContainer = document.querySelectorAll(".Filter-Container div");
+
+document.addEventListener("click", (ele) => {
+  if (ele.target.className == "dessert") {
+    document.querySelector("main").textContent = "";
+    local = localStorage.getItem("customer");
+    doArray = JSON.parse(localStorage.getItem("customer"));
+    let arrayNo = [];
+    for (let i = 0; i < doArray.length; i++) {
+      console.log(doArray[i]["category"]);
+      if (doArray[i].category == "dessert") {
+        arrayNo.push(doArray[i]);
+        console.log(arrayNo);
+      }
+    }
+    console.log(arrayNo);
+    addProductToPage(arrayNo);
+    show();
+  }
+
+  if (ele.target.className == "food") {
+    document.querySelector("main").textContent = "";
+    local = localStorage.getItem("customer");
+    doArray = JSON.parse(localStorage.getItem("customer"));
+    let arrayNo = [];
+    for (let i = 0; i < doArray.length; i++) {
+      console.log(doArray[i]["category"]);
+      if (doArray[i].category == "food") {
+        arrayNo.push(doArray[i]);
+        console.log(arrayNo);
+      }
+    }
+    console.log(arrayNo);
+    addProductToPage(arrayNo);
+    show();
+  }
+  if (ele.target.className == "apprtizers") {
+    document.querySelector("main").textContent = "";
+    local = localStorage.getItem("customer");
+    doArray = JSON.parse(localStorage.getItem("customer"));
+    let arrayNo = [];
+    for (let i = 0; i < doArray.length; i++) {
+      console.log(doArray[i]["category"]);
+      if (doArray[i].category == "apprtizers") {
+        arrayNo.push(doArray[i]);
+        console.log(arrayNo);
+      }
+    }
+    console.log(arrayNo);
+    addProductToPage(arrayNo);
+    show();
+  }
+  if (ele.target.className == "drinks") {
+    document.querySelector("main").textContent = "";
+    local = localStorage.getItem("customer");
+    doArray = JSON.parse(localStorage.getItem("customer"));
+    let arrayNo = [];
+    for (let i = 0; i < doArray.length; i++) {
+      console.log(doArray[i]["category"]);
+      if (doArray[i].category == "dirnks") {
+        arrayNo.push(doArray[i]);
+        console.log(arrayNo);
+      }
+    }
+    console.log(arrayNo);
+    addProductToPage(arrayNo);
+    show();
+  }
+
+  if (ele.target.className === "all") {
+    console.log(ctArray);
+    document.querySelector("main").textContent = "";
+    addProductToPage(ctArray);
+    show();
+    console.log("All");
+  }
+});
